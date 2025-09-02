@@ -11,17 +11,40 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     
+    
     <style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+        html, body {
+  overflow-x: hidden;                 /* global guard */
+  background-color: #0f172a;          /* matches your dark bg so no white flash */
+}
+
+/* Clip any animated/absolute layers */
+.overflow-clip, .clip-x {
+  overflow: hidden;
+}
+
+/* Optional: narrow the marquee gap on small screens */
+@media (max-width: 576px) {
+  .logo-scroll { gap: 1.25rem !important; }
+}
         /* Custom CSS for exact visual matching */
         :root {
-            --gradient-cyan-purple: linear-gradient(45deg, #06b6d4, #8b5cf6);
-            --gradient-purple-pink: linear-gradient(45deg, #8b5cf6, #ec4899);
+            /* --gradient-cyan-purple: linear-gradient(45deg, #06b6d4, #8b5cf6); */
+            --gradient-cyan-purple: linear-gradient(45deg,  #FDC315, #FFF4B0);
+            /* --gradient-purple-pink: linear-gradient(45deg, #8b5cf6, #ec4899); */
+            --gradient-purple-pink: linear-gradient(45deg, var(--cyan-400), #007C91);
             --gradient-orange-red: linear-gradient(45deg, #f97316, #ef4444);
-            --gradient-yellow-orange: linear-gradient(45deg, #eab308, #f97316);
-            --slate-900: #0f172a;
+            /* --gradient-yellow-orange: linear-gradient(45deg, #eab308, #f97316); */
+            --gradient-yellow-orange: linear-gradient(45deg, #FDC315, #FFF4B0);
+            --slate-900: #1A2238;
             --slate-800: #1e293b;
             --slate-700: #334155;
             --slate-600: #475569;
+            /* --slate-900: #1A2238;
+            --slate-800: #202A46;
+            --slate-700: #2D3B62;
+            --slate-600: #40548C; */
             --slate-50: #f8fafc;
             --cyan-400: #22d3ee;
             --purple-500: #a855f7;
@@ -29,7 +52,7 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            font-family: 'Roboto', sans-serif;
             line-height: 1.6;
         }
 
@@ -54,6 +77,14 @@
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        .gradient-text-cyan {
+  background: linear-gradient(90deg, var(--cyan-400), #007C91);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text; /* for Firefox */
+  color: transparent;
+}
+
 
         .gradient-text-orange-red {
             background: var(--gradient-orange-red);
@@ -86,20 +117,20 @@
 
         /* Animation classes */
         .floating-animation {
-            animation: float 6s ease-in-out infinite;
+            animation: float 20s ease-in-out infinite;
         }
 
         .floating-animation-2 {
-            animation: float 8s ease-in-out infinite reverse;
+            animation: float 20s ease-in-out infinite reverse;
         }
 
         .floating-animation-3 {
-            animation: float 10s ease-in-out infinite;
+            animation: float 20s ease-in-out infinite;
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px) scale(1); }
-            50% { transform: translateY(-30px) scale(1.1); }
+            20%, 100% { transform: translateY(100px) scale(1); }
+            50% { transform: translateY(-100px) scale(1.1); }
         }
 
         @keyframes scroll {
@@ -173,6 +204,12 @@
             right: 1rem;
             z-index: 1050;
         }
+        .award-pill {
+  border-radius: 0;              /* no rounded corners */
+  border: 2px solid #F9F9F9;     /* white border */
+  background: var(--gradient-yellow-orange);
+  color: #2D2D2D;                /* keep text color */
+}
     </style>
 </head>
 <body>
@@ -182,7 +219,7 @@
         <div class="container-fluid px-4">
             <!-- Logo -->
             <a class="navbar-brand" href="#home">
-            <img src="passio-logo.png" alt="Passio Logo" height="40" />
+            <img src="passio-logo.png" alt="Passio Logo" height="60" />
             </a>
             
             <!-- Mobile toggle -->
@@ -196,9 +233,9 @@
                     <li class="nav-item">
                         <a class="nav-link text-white-50 px-3" href="#home">Home</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link text-white-50 px-3" href="#clientele">Clientele</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link text-white-50 px-3" href="#featured-works">Featured Works</a>
                     </li>
@@ -208,15 +245,15 @@
                     <li class="nav-item">
                         <a class="nav-link text-white-50 px-3" href="#packages">Packages</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link text-white-50 px-3" href="#testimonials">Testimonials</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link text-white-50 px-3" href="#contact">Contact</a>
                     </li>
                 </ul>
-                <a href="#contact" class="btn btn-primary px-4 py-2 rounded-pill" style="background: var(--gradient-cyan-purple); border: none;">
-                    Enquire Now
+                <a href="#contact" class="btn btn-primary px-4 py-2 rounded-pill" style="background: var(--gradient-cyan-purple); border-radius:none; border-color: #F9F9F9; border-width: 2px;color: #2D2D2D;">
+                    <b>Enquire Now</b> 
                 </a>
             </div>
         </div>
@@ -248,8 +285,8 @@
                             Combining creativity and AI innovation to keep your brand future-ready.
                         </p>
                         <div class="mb-5">
-                            <a href="#contact" class="btn btn-lg px-5 py-3 fs-5 rounded-pill shadow-2xl hover-scale" style="background: var(--gradient-cyan-purple); border: none; color: white;">
-                                Enquire Now
+                            <a href="#contact" class="btn btn-lg px-5 py-3 fs-5 rounded-pill shadow-2xl hover-scale" style="background: var(--gradient-cyan-purple); border-radius:none; border-color: #F9F9F9; border-width: 2px; color: #2D2D2D;">
+                               <b>Enquire Now</b> 
                             </a>
                         </div>
                         <div class="d-flex align-items-center justify-content-center text-white-50">
@@ -268,7 +305,7 @@
                 <div class="row justify-content-center mb-5">
                     <div class="col-lg-8">
                         <h2 class="display-2 mb-4 text-dark">
-                            Trusted by leading brands across UAE & India
+                            Trusted by leading brands across <b> UAE & India</b>
                         </h2>
                         <p class="fs-5 text-muted mx-auto" style="max-width: 32rem;">
                             From startups to enterprises, we've built meaningful campaigns that last.
@@ -442,8 +479,8 @@
                             <div class="row g-3">
                                 <div class="col-sm-6">
                                     <div class="bg-white rounded-3 p-4 h-100 shadow-sm border hover-scale-sm">
-                                        <div class="rounded-3 d-flex align-items-center justify-content-center mb-3" style="width: 3rem; height: 3rem; background: var(--gradient-cyan-purple);">
-                                            <i data-lucide="trending-up" class="text-white"></i>
+                                        <div class="rounded-3 d-flex align-items-center justify-content-center mb-3" style="width: 3rem; height: 3rem; background:#FDC315;">
+                                            <i data-lucide="trending-up" class="text-#2D2D2D;"></i>
                                         </div>
                                         <h4 class="h5 mb-3 text-dark">Move Faster</h4>
                                         <p class="text-muted small">Accelerate your creative process with AI-powered solutions</p>
@@ -451,8 +488,8 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="bg-white rounded-3 p-4 h-100 shadow-sm border hover-scale-sm">
-                                        <div class="rounded-3 d-flex align-items-center justify-content-center mb-3" style="width: 3rem; height: 3rem; background: var(--gradient-cyan-purple);">
-                                            <i data-lucide="zap" class="text-white"></i>
+                                        <div class="rounded-3 d-flex align-items-center justify-content-center mb-3" style="width: 3rem; height: 3rem; background: #FDC315;">
+                                            <i data-lucide="zap" class="text-#2D2D2D"></i>
                                         </div>
                                         <h4 class="h5 mb-3 text-dark">Work Smarter</h4>
                                         <p class="text-muted small">Intelligent automation that enhances your creative workflow</p>
@@ -460,8 +497,8 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="bg-white rounded-3 p-4 h-100 shadow-sm border hover-scale-sm">
-                                        <div class="rounded-3 d-flex align-items-center justify-content-center mb-3" style="width: 3rem; height: 3rem; background: var(--gradient-cyan-purple);">
-                                            <i data-lucide="clock" class="text-white"></i>
+                                        <div class="rounded-3 d-flex align-items-center justify-content-center mb-3" style="width: 3rem; height: 3rem; background: #FDC315;">
+                                            <i data-lucide="clock" class="text-#2D2D2D"></i>
                                         </div>
                                         <h4 class="h5 mb-3 text-dark">No Extra Hours</h4>
                                         <p class="text-muted small">Achieve more in less time without burning out your team</p>
@@ -469,8 +506,8 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="bg-white rounded-3 p-4 h-100 shadow-sm border hover-scale-sm">
-                                        <div class="rounded-3 d-flex align-items-center justify-content-center mb-3" style="width: 3rem; height: 3rem; background: var(--gradient-cyan-purple);">
-                                            <i data-lucide="dollar-sign" class="text-white"></i>
+                                        <div class="rounded-3 d-flex align-items-center justify-content-center mb-3" style="width: 3rem; height: 3rem; background: #FDC315;">
+                                            <i data-lucide="dollar-sign" class="text-#2D2D2D"></i>
                                         </div>
                                         <h4 class="h5 mb-3 text-dark">No Extra Cost</h4>
                                         <p class="text-muted small">Maximum efficiency without breaking your budget</p>
@@ -526,13 +563,13 @@
                             
                             <div class="position-relative rounded-4 p-5 hover-scale-sm" style="background-color: var(--slate-800); border: 1px solid var(--slate-700); z-index: 10;">
                                 <!-- Step Number -->
-                                <div class="position-absolute rounded-pill px-3 py-1 text-white" style="top: -1rem; left: 2rem; background: var(--gradient-cyan-purple); font-size: 0.875rem;">
+                                <div class="position-absolute rounded-pill px-3 py-1 text-white" style="top: -1rem; left: 2rem; background:#007C91; font-size: 0.875rem;">
                                     01
                                 </div>
                                 
                                 <!-- Icon -->
-                                <div class="rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4 hover-scale" style="width: 4rem; height: 4rem; background: var(--gradient-cyan-purple);">
-                                    <i data-lucide="mouse-pointer" class="text-white"></i>
+                                <div class="rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4 hover-scale" style="width: 4rem; height: 4rem; background: #FDC315;">
+                                    <i data-lucide="mouse-pointer" class="text-2D2D2D"></i>
                                 </div>
                                 
                                 <!-- Content -->
@@ -547,13 +584,13 @@
                         <div class="text-center position-relative">
                             <div class="position-relative rounded-4 p-5 hover-scale-sm" style="background-color: var(--slate-800); border: 1px solid var(--slate-700); z-index: 10;">
                                 <!-- Step Number -->
-                                <div class="position-absolute rounded-pill px-3 py-1 text-white" style="top: -1rem; left: 2rem; background: var(--gradient-cyan-purple); font-size: 0.875rem;">
+                                <div class="position-absolute rounded-pill px-3 py-1 text-white" style="top: -1rem; left: 2rem; background: #007C91; font-size: 0.875rem;">
                                     02
                                 </div>
                                 
                                 <!-- Icon -->
-                                <div class="rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4 hover-scale" style="width: 4rem; height: 4rem; background: var(--gradient-cyan-purple);">
-                                    <i data-lucide="message-square" class="text-white"></i>
+                                <div class="rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4 hover-scale" style="width: 4rem; height: 4rem; background: #FDC315;">
+                                    <i data-lucide="message-square" class="text-2D2D2D"></i>
                                 </div>
                                 
                                 <!-- Content -->
@@ -568,13 +605,13 @@
                         <div class="text-center position-relative">
                             <div class="position-relative rounded-4 p-5 hover-scale-sm" style="background-color: var(--slate-800); border: 1px solid var(--slate-700); z-index: 10;">
                                 <!-- Step Number -->
-                                <div class="position-absolute rounded-pill px-3 py-1 text-white" style="top: -1rem; left: 2rem; background: var(--gradient-cyan-purple); font-size: 0.875rem;">
+                                <div class="position-absolute rounded-pill px-3 py-1 text-white" style="top: -1rem; left: 2rem; background: #007C91; font-size: 0.875rem;">
                                     03
                                 </div>
                                 
                                 <!-- Icon -->
-                                <div class="rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4 hover-scale" style="width: 4rem; height: 4rem; background: var(--gradient-cyan-purple);">
-                                    <i data-lucide="sparkles" class="text-white"></i>
+                                <div class="rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4 hover-scale" style="width: 4rem; height: 4rem; background: #FDC315;;">
+                                    <i data-lucide="sparkles" class="text-2D2D2D"></i>
                                 </div>
                                 
                                 <!-- Content -->
@@ -591,8 +628,8 @@
                     <p class="fs-5 text-white-50 mb-4">
                         Ready to experience the future of creative work?
                     </p>
-                    <a href="#packages" class="btn btn-lg px-5 py-3 rounded-pill shadow-2xl hover-scale" style="background: var(--gradient-cyan-purple); border: none; color: white;">
-                        Get Started Today
+                    <a href="#packages" class="btn btn-lg px-5 py-3 rounded-pill shadow-2xl hover-scale" style="background: var(--gradient-cyan-purple);  border-radius:none; border-color: #F9F9F9; border-width: 2px; color: #2D2D2D;">
+                       <b>Get Started Today</b> 
                     </a>
                 </div>
             </div>
@@ -658,8 +695,8 @@
                                 </div>
                             </div>
 
-                            <button class="btn btn-dark btn-lg w-100 py-3 fs-5 rounded-pill">
-                                Get Started
+                            <button class="btn btn-dark btn-lg w-100 py-3 fs-5 rounded-pill border-radius:none; border-color: #F9F9F9; border-width: 2px;">
+                                 <b>Get Started Today</b> 
                             </button>
                         </div>
                     </div>
@@ -669,8 +706,8 @@
                         <div class="bg-white rounded-4 p-5 h-100 shadow-2xl border-2 hover-scale position-relative" style="border-color: var(--cyan-400) !important; transform: scale(1.05);">
                             <!-- Popular Badge -->
                             <div class="position-absolute top-0 start-50 translate-middle px-4 py-2 rounded-pill text-white d-flex align-items-center" style="background: var(--gradient-cyan-purple);">
-                                <i data-lucide="star" class="me-2" style="width: 1rem; height: 1rem;"></i>
-                                <span>Most Popular</span>
+                                <i data-lucide="star" class="me-2" style="width: 1rem; height: 1rem; color: #2D2D2D;"></i>
+                                <span style="color: #2D2D2D;">Most Popular</span>
                             </div>
 
                             <div class="text-center mb-5 pt-3">
@@ -727,8 +764,8 @@
                                 </div>
                             </div>
 
-                            <button class="btn btn-lg w-100 py-3 fs-5 rounded-pill shadow-2xl text-white" style="background: var(--gradient-cyan-purple); border: none;">
-                                Get Started
+                            <button class="btn btn-lg w-100 py-3 fs-5 rounded-pill shadow-2xl text-#2D2D2D" style="background: var(--gradient-cyan-purple);  border-radius:none; border-color: #F9F9F9; border-width: 2px;">
+                                 <b>Get Started Today</b> 
                             </button>
                         </div>
                     </div>
@@ -739,7 +776,7 @@
                             <div class="text-center mb-5">
                                 <h3 class="h6 mb-3 text-muted text-uppercase tracking-wider">ENTERPRISE</h3>
                                 <div class="d-flex align-items-baseline justify-content-center mb-3">
-                                    <span class="display-3 gradient-text-purple-pink">$4,999</span>
+                                    <span class="display-3 gradient-text-cyan">$4,999</span>
                                     <span class="text-muted ms-2">/month</span>
                                 </div>
                                 <p class="text-muted">Full-scale creative partnership for large businesses</p>
@@ -796,8 +833,8 @@
                                 </div>
                             </div>
 
-                            <button class="btn btn-dark btn-lg w-100 py-3 fs-5 rounded-pill">
-                                Get Started
+                            <button class="btn btn-dark btn-lg w-100 py-3 fs-5 rounded-pill  border-radius:none; border-color: #F9F9F9; border-width: 2px;">
+                                 <b>Get Started Today</b> 
                             </button>
                         </div>
                     </div>
@@ -940,26 +977,22 @@
                         </div>
                     </div>
                 </div> -->
-                <div class="text-center py-5">
-    <h3 class="display-5 mb-5 text-white fw-bold">Awards & Recognition</h3>
-    <div class="d-flex flex-wrap justify-content-center gap-4">
-        <div class="px-5 py-3 rounded-pill text-white hover-scale fs-5" style="background: var(--gradient-yellow-orange);">
-            <i data-lucide="award" class="me-2" style="width: 1.5rem; height: 1.5rem;"></i>
-            Best Creative Agency 2024
-        </div>
-        <div class="px-5 py-3 rounded-pill text-white hover-scale fs-5" style="background: var(--gradient-yellow-orange);">
-            <i data-lucide="award" class="me-2" style="width: 1.5rem; height: 1.5rem;"></i>
-            AI Innovation Award
-        </div>
-        <div class="px-5 py-3 rounded-pill text-white hover-scale fs-5" style="background: var(--gradient-yellow-orange);">
-            <i data-lucide="award" class="me-2" style="width: 1.5rem; height: 1.5rem;"></i>
-            Digital Excellence
-        </div>
-        <!-- <div class="px-5 py-3 rounded-pill text-white hover-scale fs-5" style="background: var(--gradient-yellow-orange);">
-            <i data-lucide="award" class="me-2" style="width: 1.5rem; height: 1.5rem;"></i>
-            Brand Strategy Leader
-        </div> -->
+<div class="text-center py-5">
+  <h3 class="display-5 mb-5 text-white fw-bold">Awards & Recognition</h3>
+  <div class="d-flex flex-wrap justify-content-center gap-4">
+    <div class="px-5 py-3 rounded-pill award-pill hover-scale fs-5">
+      <i data-lucide="award" class="me-2" style="width: 1.5rem; height: 1.5rem;"></i>
+      Best Creative Agency 2024
     </div>
+    <div class="px-5 py-3 rounded-pill award-pill hover-scale fs-5">
+      <i data-lucide="award" class="me-2" style="width: 1.5rem; height: 1.5rem;"></i>
+      AI Innovation Award
+    </div>
+    <div class="px-5 py-3 rounded-pill award-pill hover-scale fs-5">
+      <i data-lucide="award" class="me-2" style="width: 1.5rem; height: 1.5rem;"></i>
+      Digital Excellence
+    </div>
+  </div>
 </div>
 
             </div>
@@ -987,33 +1020,53 @@
 
                 <!-- CTA Buttons -->
                 <div class="row g-4 mb-5">
-                    <div class="col-lg-6">
-                        <div class="rounded-4 p-5 text-center text-white hover-scale cursor-pointer h-100" style="background: linear-gradient(135deg, var(--cyan-400), #2563eb);">
+                                        <!-- <div class="col-lg-6">
+                        <div class="rounded-4 p-5 text-center text-white hover-scale cursor-pointer h-100" style="background: linear-gradient(135deg, var(--cyan-400), #007C91);">
                             <div class="rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3 hover-scale" style="width: 4rem; height: 4rem; background: rgba(255,255,255,0.2); backdrop-filter: blur(8px);">
                                 <i data-lucide="calendar" class="text-white" style="width: 2rem; height: 2rem;"></i>
                             </div>
-                            <h3 class="h4 mb-2">Book a Call</h3>
+                            <h3 class="h4 mb-2 ">Book a Call</h3>
                             <p class="text-white-75">Schedule a free consultation</p>
-                        </div>
-                    </div>
-                    <!-- <div class="col-lg-4">
-                        <div class="rounded-4 p-5 text-center text-white hover-scale cursor-pointer h-100" style="background: var(--gradient-purple-pink);">
-                            <div class="rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3 hover-scale" style="width: 4rem; height: 4rem; background: rgba(255,255,255,0.2); backdrop-filter: blur(8px);">
-                                <i data-lucide="dollar-sign" class="text-white" style="width: 2rem; height: 2rem;"></i>
-                            </div>
-                            <h3 class="h4 mb-2">See the Price</h3>
-                            <p class="text-white-75">View our transparent pricing</p>
                         </div>
                     </div> -->
                     <div class="col-lg-6">
-                        <div class="rounded-4 p-5 text-center text-white hover-scale cursor-pointer h-100" style="background: var(--gradient-orange-red);">
+  <div class="rounded-4 p-5 text-center text-2D2D2D hover-scale cursor-pointer h-100" 
+       style="background: linear-gradient(135deg, var(--cyan-400), #007C91); color: #2D2D2D;">
+       
+    <div class="rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3 hover-scale" 
+         style="width: 4rem; height: 4rem; background: rgba(255,255,255,0.2); backdrop-filter: blur(8px);">
+      <i data-lucide="calendar" class="icon-dark" style="width: 2rem; height: 2rem; color: #2D2D2D;"></i>
+    </div>
+    
+    <h3 class="h4 mb-2">Book a Call</h3>
+    <p style="color: #2D2D2D;">Schedule a free consultation</p>
+  </div>
+</div>
+
+
+                    <!-- <div class="col-lg-6">
+                        <div class="rounded-4 p-5 text-center text-white hover-scale cursor-pointer h-100" style="background: var(--gradient-yellow-orange);">
                             <div class="rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3 hover-scale" style="width: 4rem; height: 4rem; background: rgba(255,255,255,0.2); backdrop-filter: blur(8px);">
                                 <i data-lucide="message-circle" class="text-white" style="width: 2rem; height: 2rem;"></i>
                             </div>
                             <h3 class="h4 mb-2">Chat With Us</h3>
                             <p class="text-white-75">Start a conversation today</p>
                         </div>
-                    </div>
+                    </div> -->
+                    <div class="col-lg-6">
+  <div class="rounded-4 p-5 text-center hover-scale cursor-pointer h-100" 
+       style="background: var(--gradient-yellow-orange); color: #2D2D2D;">
+       
+    <div class="rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3 hover-scale" 
+         style="width: 4rem; height: 4rem; background: rgba(255,255,255,0.2); backdrop-filter: blur(8px);">
+      <i data-lucide="message-circle" style="width: 2rem; height: 2rem; color: #2D2D2D;"></i>
+    </div>
+    
+    <h3 class="h4 mb-2">Chat With Us</h3>
+    <p style="color: #2D2D2D;">Start a conversation today</p>
+  </div>
+</div>
+
                 </div>
 
                 <!-- Alternative Contact -->
@@ -1095,8 +1148,8 @@
                         <div class="col-lg-4">
                             <h4 class="h5 text-white mb-4">Quick Start</h4>
                             <div class="d-flex flex-column gap-3 mb-4">
-                                <button class="btn btn-lg px-4 py-3 rounded-pill hover-scale text-white" style="background: var(--gradient-cyan-purple); border: none;">
-                                    Get Started Today
+                                <button class="btn btn-lg px-4 py-3 rounded-pill hover-scale text-2D2D2D" style="background: var(--gradient-cyan-purple);  border-radius:none; border-color: #F9F9F9; border-width: 2px;">
+                                    <b>Get Started Today</b>
                                 </button>
                                 <!-- <button class="btn btn-outline-light btn-lg px-4 py-3 rounded-pill hover-scale">
                                     Download Portfolio
